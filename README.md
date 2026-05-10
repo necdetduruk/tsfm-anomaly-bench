@@ -53,7 +53,7 @@ W&B project: *link pending*
 
 ## About
 
-Built by [Your Name], Senior ML Engineer with 6 years in production time-series ML at scale. [LinkedIn] · [Blog]
+Built by Necdet Duruk, Senior ML Engineer with 6 years in production time-series ML at scale. [https://www.linkedin.com/in/necdetduruk/] · [Blog]
 
 ## License
 
