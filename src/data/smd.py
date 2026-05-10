@@ -12,7 +12,18 @@ import numpy as np
 import torch
 from torch.utils.data import Dataset
 
-SMD_ROOT = Path("data/smd")
+def _find_project_root() -> Path:
+    """Walk up from this file until we find pyproject.toml."""
+    p = Path(__file__).resolve()
+    for parent in p.parents:
+        if (parent / "pyproject.toml").exists():
+            return parent
+    raise RuntimeError("Could not locate project root (no pyproject.toml found).")
+
+
+PROJECT_ROOT = _find_project_root()
+SMD_ROOT = PROJECT_ROOT / "data" / "smd"
+
 N_FEATURES = 38
 
 
