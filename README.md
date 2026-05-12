@@ -10,16 +10,17 @@ Foundation models like Chronos, TimesFM, and Moment have generated real exciteme
 
 ## Headline results — SMD (Server Machine Dataset)
 
-| Method | Family | F1 | Precision | Recall | Notes |
+Aggregate over 28 machines × 3 seeds.
+
+| Method | Family | Best F1 | PA Best F1 | AUC-PR | Notes |
 |---|---|---|---|---|---|
-| Isolation Forest (tuned) | Classical | TBD | TBD | TBD | Per-machine tuning |
+| Isolation Forest | Classical | 0.326 ± 0.202 | 0.842 ± 0.153 | 0.277 ± 0.212 | Per-timestep, no temporal context |
 | LSTM Autoencoder | Classical-DL | – | – | – | Pending |
-| OmniAnomaly | Classical-DL | – | – | – | Reproduced from paper |
 | Chronos-T5-base | Foundation | – | – | – | Pending |
 | TimesFM | Foundation | – | – | – | Pending |
 | Moment-base | Foundation | – | – | – | Pending |
 
-Metrics use point-adjusted F1 over a fixed evaluation window. See `src/evaluation/` for definitions.
+**Notes on metrics.** Best F1 and PA Best F1 both use per-test-set threshold tuning. The gap between them (0.33 vs 0.84 for IF) reflects the inflation effect of point-adjustment, which the literature widely reports despite known weaknesses ([Garg et al., 2021](https://arxiv.org/abs/2109.05257)). AUC-PR is threshold-free and the most rigorous of the three. The per-machine F1 spread (0.07 to 0.85) shows SMD is highly heterogeneous; aggregate numbers hide a lot.
 
 ## Why SMD
 
@@ -37,7 +38,7 @@ Metrics use point-adjusted F1 over a fixed evaluation window. See `src/evaluatio
 ## Reproduce
 
 ```bash
-git clone https://github.com/<you>/tsfm-anomaly-bench
+git clone https://github.com/necdetduruk/tsfm-anomaly-bench
 cd tsfm-anomaly-bench
 uv sync
 bash scripts/download_smd.sh
@@ -53,7 +54,7 @@ W&B project: *link pending*
 
 ## About
 
-Built by Necdet Duruk, Senior ML Engineer with 6 years in production time-series ML at scale. [https://www.linkedin.com/in/necdetduruk/] · [Blog]
+Built by [Necdet Duruk](https://www.linkedin.com/in/necdetduruk/), Senior ML Engineer with 6 years in production time-series ML at scale. [Blog]
 
 ## License
 
