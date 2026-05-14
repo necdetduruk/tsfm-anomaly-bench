@@ -49,7 +49,9 @@ W&B project: *link pending*
 
 ## Companion writeups
 
-- Part 1: Setting up the benchmark — *coming soon*
+## Companion writeups
+
+- [Part 1: Why I'm benchmarking time-series foundation models against an Isolation Forest](blog/part-1.md)
 - Part 2: Foundation models vs. classical baselines — *coming soon*
 
 ## About
